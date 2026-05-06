@@ -1,0 +1,258 @@
+/* ===== GLOBAL RESET & BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f9;
+  color: #2c3e50;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR - SMOOTH HOVER EXPAND ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;                /* collapsed: icons only */
+  height: 100vh;
+  background: #16213e;
+  color: #ecf0f1;
+  transition: width 0.4s ease;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+}
+
+.sidebar:hover {
+  width: 260px;               /* expanded */
+}
+
+/* Logo */
+.sidebar-logo {
+  padding: 25px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar-logo span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3498db;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sidebar:hover .sidebar-logo span {
+  opacity: 1;
+}
+
+/* Menu */
+.sidebar ul {
+  list-style: none;
+  padding: 15px 0;
+}
+
+.sidebar li {
+  margin: 5px 0;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: #d1d8e0;
+  text-decoration: none;
+  padding: 14px 16px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.sidebar a i {
+  font-size: 1.4rem;
+  width: 38px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar a span {
+  margin-left: 14px;
+  opacity: 0;
+  transition: opacity 0.35s ease 0.05s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sidebar:hover a span {
+  opacity: 1;
+}
+
+/* Hover & Active States */
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.sidebar a.active {
+  background: rgba(30,64,175,0.2);
+  border-left: 5px solid #1e40af;
+  padding-left: 11px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  margin-left: 80px;
+  padding: 40px;
+  transition: margin-left 0.4s ease;
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 260px;
+}
+
+/* ===== CONTAINER & FORMS ===== */
+.container {
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.admin-form label {
+  font-weight: 600;
+  margin: 20px 0 8px;
+  display: block;
+  color: #2c3e50;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: #1e40af;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30,64,175,0.15);
+}
+
+.btn-primary {
+  margin-top: 25px;
+  padding: 14px 30px;
+  background: #16213e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  margin-top: 25px;
+  margin-left: 10px;
+  padding: 14px 30px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* ===== ALERTS ===== */
+.alert {
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.alert.success {
+  background: #e6ffed;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.alert.danger {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 80px;
+  }
+  .sidebar:hover {
+    width: 80px; /* no auto-expand on mobile */
+  }
+  .main-content {
+    margin-left: 80px;
+  }
+  .sidebar a span {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content {
+    padding: 20px;
+  }
+  .container {
+    padding: 25px;
+  }
+}
